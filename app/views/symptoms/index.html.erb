@@ -1,0 +1,34 @@
+<h1>一覧画面</h1>
+
+<%= form_with model: @symptom, local: false do |form| %>
+  <%= form.select :category_id, [['頭', 1], ['おなか', 2]], { include_blank: true }, id: "input-select" %>
+<% end %>
+
+<label class="js-details"></label>
+
+<script>
+  // id="input-select"の要素を取得
+  const inputSelect = document.getElementById("input-select");
+  // セレクトボックスの要素が変更されたときの処理
+  inputSelect.addEventListener("change", function() {
+    // 変更された値を取得
+    const selectedValue = inputSelect.value;
+  
+    $.ajax({
+      type: 'GET', // HTTPメソッド
+      url: '/symptoms/get_details', // リクエストを送信するURL
+      data:  { category_id: selectedValue }, // サーバーに送信するデータ
+      dataType: 'json' // サーバーから返却される型
+    })
+    .done(function (details) {
+      $(details).each(function(i,detail) {
+        $('.js-details').append(
+          `<li class="detail">
+             <input type="checkbox" id="details" name="detail_checked">
+             <label for="details">${detail}</label>
+          </li>`
+        );
+      });
+    })
+  });
+</script>
