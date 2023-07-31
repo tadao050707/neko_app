@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### 今はこんな状態です
+https://github.com/tadao050707/neko_app/assets/24279672/4fc4d836-a98c-4060-92cc-3b9f894cbc3e
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 注意
+- 以下のコマンドを実行してください
+```
+rails db:seed
+```
